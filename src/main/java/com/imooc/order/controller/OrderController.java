@@ -1,6 +1,7 @@
 package com.imooc.order.controller;
 
 import com.imooc.order.VO.ResultVO;
+import com.imooc.order.client.ProductClient;
 import com.imooc.order.converter.OrderForm2OrderDTOConverter;
 import com.imooc.order.dto.OrderDTO;
 import com.imooc.order.enums.ResultEnum;
@@ -12,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
