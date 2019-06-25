@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/config")
 @RefreshScope // 如果没有配置webhooks（在git服务端配置，这个可以找到的） ,那么每次更新配置前必须 post 请求 config 服务的 actuator/refresh，这样新的配置才会生效
 public class ConfigController {
-    @Value("${man}")
-    private String man;
+    @Value("${env}")
+    private String env;
 
-    @GetMapping("/man")
-    public String getMan(){
-        return man;
+    @GetMapping("/print")
+    public String getEnv(){
+        return env;
     }
 }
