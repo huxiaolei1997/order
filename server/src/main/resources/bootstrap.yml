@@ -15,6 +15,17 @@ spring:
         enabled: true
         service-id:  CONFIG
       profile: dev
+    stream:
+      bindings:
+        myMessage:
+          group: order
+          content-type: application/json
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    sender:
+      type: web
 eureka:
   client:
     service-url:
@@ -24,6 +35,21 @@ eureka:
 # 最好写在运行时参数里面 VM options: -Dserver.port=8081
 server:
   port: 8081
+hystrix:
+  command:
+    getProductInfoList:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+feign:
+  hystrix:
+    enabled: true
 #spring:
 #  application:
 #  name: order
@@ -33,8 +59,3 @@ server:
 #        enabled: true
 #        service-id: CONFIG
 #      profile: dev
-#    stream:
-#      bindings:
-#        myMessage:
-#          group : order
-#          content-type: application/json
